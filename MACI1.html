@@ -10,24 +10,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root { --ink:#073B4C; --green:#06D6A0; --blue:#118AB2; --amber:#FFD166; --orange:#E67E22; --violet:#8E44AD; --emerald:#27AE60; --rose:#FF6B6B; --gray:#A3A3A3; }
-    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#f8f9fa; }
+    :root { --ink:#073B4C; --blue:#118AB2; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#f8f9fa; color:#111827; }
     .card { background:#fff; border-radius:0.75rem; box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05); padding:1.25rem }
-    .card:hover{ transform:translateY(-2px); transition:transform .2s ease }
-    .gradient-text { background: linear-gradient(90deg, var(--blue), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    /* Overlay pantalla completa */
+    .fs-overlay{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.92); z-index:9999; }
+    .fs-overlay.active{ display:flex; }
+    .fs-img{ max-width:95vw; max-height:95vh; object-fit:contain; }
+    .fs-close{ position:absolute; top:10px; right:10px; color:#e5e7eb; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:.5rem; padding:.35rem .55rem; font-size:.9rem; }
+    .fs-hint{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); color:#e5e7eb; font-size:.75rem; opacity:.85; }
+    .clickable{ cursor:zoom-in; }
+    .badge{ display:inline-block; padding:.25rem .5rem; border-radius:.5rem; background:#F3F4F6; font-weight:600; font-size:.85rem }
     .chart-container{ position:relative; width:100%; height:360px }
     @media (min-width: 768px){ .chart-container{ height:420px } }
-    .badge{ display:inline-block; padding:.25rem .5rem; border-radius:.5rem; background:#F3F4F6; font-weight:600; font-size:.85rem }
   </style>
 </head>
-<body class="text-gray-800">
-  <div class="max-w-6xl mx-auto p-4 md:p-8">
-    <!-- Header -->
-    <header class="mb-8 md:mb-12 text-center">
-      <p class="uppercase tracking-widest text-xs text-gray-500">Programa MACI – Infografía por Componente</p>
-      <h1 class="text-3xl md:text-5xl font-black text-[var(--ink)]">Componente 1: Gobernabilidad y Soberanía de Datos (CREA)</h1>
-      <p class="mt-2 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Protocolos bioculturales, CLPI, acuerdos ABS, trazabilidad y Consejo de Gobernabilidad para asegurar <span class="font-semibold">control, responsabilidad, ética y aprovechamiento</span> de los datos indígenas.</p>
+<body>
+  <main class="max-w-6xl mx-auto p-4 md:p-8">
+    <!-- Títulos -->
+    <header class="text-center mb-6 md:mb-8">
+      <h1 class="text-3xl md:text-5xl font-black text-[var(--ink)]">
+        Componente 1: Gobernabilidad y Soberanía de Datos (CREA)
+      </h1>
+      <p class="mt-3 text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+        Protocolos bioculturales, CLPI, acuerdos ABS, trazabilidad y Consejo de Gobernabilidad para asegurar
+        <strong>control, responsabilidad, ética</strong> y <strong>aprovechamiento</strong> de los datos indígenas.
+      </p>
     </header>
+
+    <!-- Imagen bajo los títulos -->
+    <section class="card overflow-hidden mb-8">
+      <figure class="m-0">
+        <img
+          id="thumb"
+          class="w-full h-auto clickable"
+          src="https://raw.githubusercontent.com/wilsonherrera77/MACI/main/Biodiversidad.png"
+          alt="Biodiversidad – Programa MACI / CREA"
+          title="Clic para ver a pantalla completa"
+        />
+        <figcaption class="px-4 py-2 text-xs text-gray-500">
+          Clic para pantalla completa. Clic de nuevo para ir a smt-onic.com/modulos/30
+        </figcaption>
+      </figure>
+    </section>
 
     <!-- Objetivo e Indicadores -->
     <section class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
@@ -35,8 +60,8 @@
         <h2 class="text-xl md:text-2xl font-bold text-[var(--ink)] mb-2">Objetivo específico</h2>
         <p class="text-gray-700">Consolidar la gobernabilidad biocultural y la soberanía de datos (CREA) mediante <strong>protocolos bioculturales</strong>, <strong>acuerdos de uso/beneficio</strong> y un <strong>Consejo de Gobernabilidad</strong>.</p>
         <ul class="mt-3 text-sm text-gray-700 list-disc list-inside">
-          <li>Alcance: cobertura nacional con enfoque territorial y articulación con organizaciones indígenas, autoridades ambientales y academia.</li>
-          <li>Entregables: Marco de gobernanza CREA; Manual CLPI y plantillas; Registro de decisiones y catálogos de metadatos; Reglamento del Consejo; Ruta de licenciamiento y trazabilidad.</li>
+          <li>Alcance: cobertura nacional con enfoque territorial e intercultural.</li>
+          <li>Entregables: marco de gobernanza CREA; manual CLPI; registro de decisiones; reglamento del Consejo; ruta de licenciamiento y trazabilidad.</li>
         </ul>
       </div>
       <div class="card">
@@ -46,15 +71,15 @@
           <li><span class="badge">≥80% Pueblos ONIC con PBD</span></li>
           <li><span class="badge">≥30 acuerdos uso/compartición</span></li>
           <li><span class="badge">100% CLPI aplicado y auditado</span></li>
-          <li><span class="badge">≥2 mecanismos de resolución y revisión ética</span></li>
+          <li><span class="badge">≥2 mecanismos de revisión ética</span></li>
         </ul>
       </div>
     </section>
 
-    <!-- Presupuesto año 1 y controles -->
+    <!-- Presupuesto (Año 1) + Gráficas (opcional) -->
     <section class="card mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[var(--ink)] mb-2">Presupuesto y Fases</h2>
-      <p class="text-sm text-gray-600 mb-3">Año 1 de referencia (incluye <strong>overhead 10%</strong>). Ajusta TRM, moneda, desglose % interno y factores anuales.</p>
+      <p class="text-sm text-gray-600 mb-3">Año 1 de referencia (incluye <strong>overhead 10%</strong>). Ajusta TRM, moneda, desglose % interno y factores anuales.</p>
 
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div class="bg-gray-50 rounded-lg p-3">
@@ -66,7 +91,7 @@
           <label class="block text-xs text-gray-500">TRM (COP/USD)</label>
           <input id="trm" type="number" step="0.01" value="4200" class="mt-1 w-full border rounded-md px-3 py-1.5" />
 
-          <label class="block text-xs text-gray-500 mt-3">Presupuesto Año 1</label>
+          <label class="block text-xs text-gray-500 mt-3">Presupuesto Año 1</label>
           <input id="y1budget" type="number" step="50" value="853050" class="mt-1 w-full border rounded-md px-3 py-1.5" />
           <p class="text-xs text-gray-500 mt-2">Total actual: <span id="y1total" class="font-semibold">—</span></p>
         </div>
@@ -76,22 +101,22 @@
             <div class="bg-gray-50 rounded-lg p-3">
               <div class="text-xs font-semibold">Personal núcleo</div>
               <input data-pct key="personal" type="number" value="33.76" class="mt-1 w-full border rounded px-2 py-1" />
-              <div class="text-[11px] text-gray-500">% del Año 1 (USD 288.000)</div>
+              <div class="text-[11px] text-gray-500">% del Año 1 (USD 288.000)</div>
             </div>
             <div class="bg-gray-50 rounded-lg p-3">
               <div class="text-xs font-semibold">Participación y logística</div>
               <input data-pct key="participacion" type="number" value="51.29" class="mt-1 w-full border rounded px-2 py-1" />
-              <div class="text-[11px] text-gray-500">% del Año 1 (USD 437.500, 13 eventos)</div>
+              <div class="text-[11px] text-gray-500">% del Año 1 (USD 437.500)</div>
             </div>
             <div class="bg-gray-50 rounded-lg p-3">
               <div class="text-xs font-semibold">Asesorías externas</div>
               <input data-pct key="asesorias" type="number" value="5.86" class="mt-1 w-full border rounded px-2 py-1" />
-              <div class="text-[11px] text-gray-500">% del Año 1 (USD 50.000)</div>
+              <div class="text-[11px] text-gray-500">% del Año 1 (USD 50.000)</div>
             </div>
             <div class="bg-gray-50 rounded-lg p-3">
               <div class="text-xs font-semibold">Operación/overhead</div>
               <input data-pct key="overhead" type="number" value="9.09" class="mt-1 w-full border rounded px-2 py-1" />
-              <div class="text-[11px] text-gray-500">10% del subtotal (USD 77.550)</div>
+              <div class="text-[11px] text-gray-500">10% del subtotal (USD 77.550)</div>
             </div>
           </div>
 
@@ -101,7 +126,7 @@
           </div>
 
           <div class="flex items-center gap-3 mt-3">
-            <label class="text-sm inline-flex items-center gap-2">Factores anuales (x Año 1):</label>
+            <label class="text-sm inline-flex items-center gap-2">Factores anuales (x Año 1):</label>
             <input id="factors" type="text" value="1,0|0,7|0,6|0,5|0,5" class="flex-1 border rounded px-2 py-1 text-sm" />
             <button id="apply" class="bg-[var(--ink)] text-white rounded px-3 py-2 text-sm">Aplicar</button>
             <button id="dl1" class="underline text-[var(--blue)] text-sm">Descargar donut</button>
@@ -115,7 +140,7 @@
       </div>
     </section>
 
-    <!-- Perfiles del equipo -->
+    <!-- Equipo -->
     <section class="card mb-8">
       <h2 class="text-xl md:text-2xl font-bold text-[var(--ink)] mb-2">Equipo sugerido y funciones</h2>
       <div class="overflow-x-auto">
@@ -128,19 +153,19 @@
             </tr>
           </thead>
           <tbody class="align-top">
-            <tr class="border-b"><td class="py-2 font-semibold">Líder de Gobernanza de Datos</td><td>TC</td><td>Dirección del componente; articulación con el Consejo; priorización de PBD/CLPI y trazabilidad.</td></tr>
-            <tr class="border-b"><td class="py-2 font-semibold">Abogado(a) en derechos indígenas y PI</td><td>TP/TC</td><td>Diseño y revisión de acuerdos ABS/PI, licencias y cláusulas tipo.</td></tr>
-            <tr class="border-b"><td class="py-2 font-semibold">Especialista en Ética/CLPI</td><td>TP</td><td>Facilitación de procesos de consentimiento; salvaguardas y monitoreo.</td></tr>
-            <tr class="border-b"><td class="py-2 font-semibold">Facilitador(a) intercultural/participación</td><td>TC</td><td>Coordinación territorial; planeación de talleres y traducción intercultural.</td></tr>
-            <tr class="border-b"><td class="py-2 font-semibold">Documentador(a)/traductor(a)</td><td>TP</td><td>Actas, versiones bilingües, catálogo de metadatos y registro de decisiones.</td></tr>
-            <tr><td class="py-2 font-semibold">PMO del programa</td><td>TP</td><td>Gestión de riesgos, cronograma y evaluación.</td></tr>
+            <tr class="border-b"><td class="py-2 font-semibold">Líder de Gobernanza de Datos</td><td>TC</td><td>Articulación con el Consejo; PBD/CLPI y trazabilidad.</td></tr>
+            <tr class="border-b"><td class="py-2 font-semibold">Abogado(a) PI/ABS</td><td>TP/TC</td><td>Diseño y revisión de acuerdos y licencias.</td></tr>
+            <tr class="border-b"><td class="py-2 font-semibold">Especialista en Ética/CLPI</td><td>TP</td><td>Consentimiento y salvaguardas.</td></tr>
+            <tr class="border-b"><td class="py-2 font-semibold">Facilitador(a) intercultural</td><td>TC</td><td>Coordinación territorial y talleres.</td></tr>
+            <tr class="border-b"><td class="py-2 font-semibold">Documentador(a)/traductor(a)</td><td>TP</td><td>Actas, versiones, catálogo y registro.</td></tr>
+            <tr><td class="py-2 font-semibold">PMO del programa</td><td>TP</td><td>Riesgos, cronograma y evaluación.</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Cronograma del componente -->
-    <section class="card mb-8">
+    <!-- Cronograma -->
+    <section class="card mb-10">
       <h2 class="text-xl md:text-2xl font-bold text-[var(--ink)] mb-2">Cronograma estratégico (5 años)</h2>
       <div class="overflow-x-auto">
         <table class="w-full min-w-[760px] text-sm">
@@ -153,112 +178,126 @@
           <tbody>
             <tr class="border-b">
               <td class="py-2">Diseño normativo y pilotos PBD/CLPI</td>
-              <td colspan="2"><div class="h-3 rounded-full bg-[var(--orange)]"></div></td>
+              <td colspan="2"><div class="h-3 rounded-full bg-orange-500"></div></td>
               <td><div class="h-3 rounded-full bg-orange-300"></div></td>
-              <td></td>
-              <td></td>
+              <td></td><td></td>
             </tr>
             <tr class="border-b">
               <td class="py-2">Consejo de Gobernabilidad operativo</td>
-              <td><div class="h-3 rounded-full bg-[var(--orange)]/60"></div></td>
-              <td colspan="3"><div class="h-3 rounded-full bg-[var(--orange)]"></div></td>
-              <td><div class="h-3 rounded-full bg-[var(--orange)]/60"></div></td>
+              <td><div class="h-3 rounded-full bg-orange-300"></div></td>
+              <td colspan="3"><div class="h-3 rounded-full bg-orange-500"></div></td>
+              <td><div class="h-3 rounded-full bg-orange-300"></div></td>
             </tr>
             <tr>
               <td class="py-2">Escalamiento territorial, evaluación y ajustes</td>
-              <td></td>
-              <td></td>
-              <td colspan="2"><div class="h-3 rounded-full bg-[var(--orange)]"></div></td>
-              <td><div class="h-3 rounded-full bg-[var(--orange)]/60"></div></td>
+              <td></td><td></td>
+              <td colspan="2"><div class="h-3 rounded-full bg-orange-500"></div></td>
+              <td><div class="h-3 rounded-full bg-orange-300"></div></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- Riesgos -->
-    <section class="card mb-10">
-      <h2 class="text-xl md:text-2xl font-bold text-[var(--ink)] mb-2">Riesgos y mitigaciones</h2>
-      <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
-        <li>Asimetrías de poder → protocolos co-diseñados y mediación independiente.</li>
-        <li>Fatiga participativa → calendarios acordados y compensación justa.</li>
-        <li>Ambigüedad legal → cláusulas tipo y revisión externa periódica.</li>
-      </ul>
-    </section>
-
     <footer class="text-center text-xs text-gray-500 mt-6">
       <p>Plantilla dinámica – exporta los gráficos con los botones sobre cada lienzo. Ajusta TRM y porcentajes según negociación.</p>
     </footer>
+  </main>
+
+  <!-- Overlay de pantalla completa -->
+  <div id="fsOverlay" class="fs-overlay" role="dialog" aria-modal="true" aria-label="Imagen a pantalla completa">
+    <button class="fs-close" type="button" aria-label="Cerrar (Esc)" onclick="closeFS()">✕</button>
+    <img id="fsImage" class="fs-img" alt="Imagen a pantalla completa" />
+    <div class="fs-hint">Clic para abrir el módulo · Pulsa Esc para cerrar</div>
   </div>
 
   <script>
-    const qs = (sel, el=document) => el.querySelector(sel);
-    const qsa = (sel, el=document) => Array.from(el.querySelectorAll(sel));
-    const fmt = (val, currency, trm) => new Intl.NumberFormat('es-CO', { style:'currency', currency: currency==='USD'?'USD':'COP', maximumFractionDigits:0 }).format(currency==='USD'?val:val*trm);
+    // ========= Pantalla completa de la imagen =========
+    const IMAGE_SRC = "https://raw.githubusercontent.com/wilsonherrera77/MACI/main/Biodiversidad.png";
+    const TARGET_URL = "https://smt-onic.com/modulos/30";
 
-    // Estado
-    let currency = 'USD';
-    let trm = 4200;
-    let year1 = 853050; // Año 1 referencia (incluye overhead 10%)
-    let pct = { personal:33.76, participacion:51.29, asesorias:5.86, overhead:9.09 }; // % dentro del Año 1
-    let factors = [1.0, 0.7, 0.6, 0.5, 0.5];
+    const thumb = document.getElementById('thumb');
+    const fsOverlay = document.getElementById('fsOverlay');
+    const fsImage = document.getElementById('fsImage');
 
-    // DOM init
-    const donutCtx = document.getElementById('donut').getContext('2d');
-    const lineCtx  = document.getElementById('line').getContext('2d');
-    let donut, line;
+    thumb.addEventListener('click', () => {
+      fsImage.src = IMAGE_SRC;
+      fsOverlay.classList.add('active');
+      try { fsOverlay.requestFullscreen && fsOverlay.requestFullscreen(); } catch(e) {}
+    });
 
-    function getBreakdown(){
-      const totalPct = Object.values(pct).reduce((a,b)=>a+Number(b||0),0) || 1;
-      const keys = ['personal','participacion','asesorias','overhead'];
-      const labels = ['Personal núcleo','Participación y logística','Asesorías externas','Operación/overhead'];
-      const palette = ['#06D6A0','#118AB2','#FFD166','#A3A3A3'];
-      const valuesUSD = keys.map(k => (year1 * (pct[k]||0) / totalPct));
-      return { keys, labels, palette, valuesUSD };
+    // Segundo clic: abrir enlace y cerrar
+    fsOverlay.addEventListener('click', (e) => {
+      if (e.target.closest('.fs-close')) return; // si tocó el botón X, solo cierra
+      window.open(TARGET_URL, '_blank', 'noopener');
+      closeFS();
+    });
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeFS(); });
+
+    function closeFS(){
+      fsOverlay.classList.remove('active');
+      fsImage.src = '';
+      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen();
     }
 
-    function compute5y(){ return factors.map(f=> year1 * f); }
+    // ========= Gráficas (igual que antes) =========
+    const qs = (s,el=document)=>el.querySelector(s);
+    const qsa=(s,el=document)=>Array.from(el.querySelectorAll(s));
+    const fmt=(v,c,tr)=>new Intl.NumberFormat('es-CO',{style:'currency',currency:c==='USD'?'USD':'COP',maximumFractionDigits:0}).format(c==='USD'?v:v*tr);
+
+    let currency='USD', trm=4200, year1=853050;
+    let pct={ personal:33.76, participacion:51.29, asesorias:5.86, overhead:9.09 };
+    let factors=[1.0,0.7,0.6,0.5,0.5];
+
+    const donutCtx=document.getElementById('donut').getContext('2d');
+    const lineCtx=document.getElementById('line').getContext('2d');
+    let donut,line;
+
+    function getBreakdown(){
+      const totalPct=Object.values(pct).reduce((a,b)=>a+Number(b||0),0)||1;
+      const keys=['personal','participacion','asesorias','overhead'];
+      const labels=['Personal núcleo','Participación y logística','Asesorías externas','Operación/overhead'];
+      const palette=['#06D6A0','#118AB2','#FFD166','#A3A3A3'];
+      const valuesUSD=keys.map(k=>year1*(pct[k]||0)/totalPct);
+      return {labels,palette,valuesUSD};
+    }
+    function compute5y(){ return factors.map(f=>year1*f); }
 
     function render(){
-      // Texto Total Año 1
-      qs('#y1total').textContent = fmt(year1, currency, trm);
+      qs('#y1total').textContent=fmt(year1,currency,trm);
+      const bd=getBreakdown();
+      const dataVals=bd.valuesUSD.map(v=>currency==='USD'?v:v*trm);
+      const donutData={labels:bd.labels,datasets:[{data:dataVals,backgroundColor:bd.palette,borderColor:'#f8f9fa',borderWidth:2}]};
+      const sharedOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#374151',font:{family:'Inter'}}},tooltip:{backgroundColor:'#fff',titleColor:'#111827',bodyColor:'#374151',borderColor:'#E5E7EB',borderWidth:1,padding:10,callbacks:{label:(ctx)=>`${ctx.label}: ${fmt(ctx.parsed,currency,trm)}`}}}};
+      if(donut) donut.destroy(); donut=new Chart(donutCtx,{type:'doughnut',data:donutData,options:sharedOpts});
 
-      // Donut
-      const bd = getBreakdown();
-      const dataVals = bd.valuesUSD.map(v => currency==='USD'?v:v*trm);
-      const donutData = { labels: bd.labels, datasets:[{ data: dataVals, backgroundColor: bd.palette, borderColor:'#f8f9fa', borderWidth:2 }] };
-      const sharedOpts = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ position:'bottom', labels:{ color:'#374151', font:{ family:'Inter' } } }, tooltip:{ backgroundColor:'#fff', titleColor:'#111827', bodyColor:'#374151', borderColor:'#E5E7EB', borderWidth:1, padding:10, callbacks:{ label:(ctx)=> `${ctx.label}: ${fmt(ctx.parsed, currency, trm)}` } } } };
-      if (donut) donut.destroy();
-      donut = new Chart(donutCtx, { type:'doughnut', data:donutData, options:sharedOpts });
-
-      // Línea 5 años
-      const y = compute5y().map(v => currency==='USD'?v:v*trm);
-      const lineData = { labels:['Año 1','Año 2','Año 3','Año 4','Año 5'], datasets:[{ label:'Presupuesto anual', data:y, fill:false, borderWidth:3, tension:.25 }] };
-      const lineOpts = { ...sharedOpts, plugins:{...sharedOpts.plugins, legend:{display:false}}, scales:{ x:{ grid:{display:false}, ticks:{color:'#374151'} }, y:{ grid:{color:'#E5E7EB'}, ticks:{ color:'#374151', callback:(v)=> currency==='USD'?('$'+(v/1e6).toFixed(1)+' M') : ((v/1e9).toFixed(1)+' mil M') } } } };
-      if (line) line.destroy();
-      line = new Chart(lineCtx, { type:'line', data:lineData, options:lineOpts });
+      const y=compute5y().map(v=>currency==='USD'?v:v*trm);
+      const lineData={labels:['Año 1','Año 2','Año 3','Año 4','Año 5'],datasets:[{label:'Presupuesto anual',data:y,fill:false,borderWidth:3,tension:.25}]};
+      const lineOpts={...sharedOpts,plugins:{...sharedOpts.plugins,legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#374151'}},y:{grid:{color:'#E5E7EB'},ticks:{color:'#374151',callback:(v)=>currency==='USD'?('$'+(v/1e6).toFixed(1)+' M'):((v/1e9).toFixed(1)+' mil M')}}}};
+      if(line) line.destroy(); line=new Chart(lineCtx,{type:'line',data:lineData,options:lineOpts});
     }
 
     function apply(){
-      currency = qsa('input[name="currency"]').find(i=>i.checked).value;
-      trm = parseFloat(qs('#trm').value||'4200');
-      year1 = parseFloat(qs('#y1budget').value||'853050');
-      qsa('input[data-pct]').forEach(inp=>{ pct[inp.getAttribute('key')] = parseFloat(inp.value||'0'); });
-      factors = (qs('#factors').value||'1,0|0,7|0,6|0,5|0,5').split('|').map(s=> parseFloat(s.replace(',','.')) || 1);
-      if (factors.length!==5) factors=[1,1,1,1,1];
+      currency=qsa('input[name="currency"]').find(i=>i.checked).value;
+      trm=parseFloat(qs('#trm').value||'4200');
+      year1=parseFloat(qs('#y1budget').value||'853050');
+      qsa('input[data-pct]').forEach(inp=>{ pct[inp.getAttribute('key')]=parseFloat(inp.value||'0'); });
+      factors=(qs('#factors').value||'1,0|0,7|0,6|0,5|0,5').split('|').map(s=>parseFloat(s.replace(',','.'))||1);
+      if(factors.length!==5) factors=[1,1,1,1,1];
       render();
     }
 
-    function downloadCanvas(id, filename){ const link=document.createElement('a'); link.download=filename; link.href=document.getElementById(id).toDataURL('image/png'); link.click(); }
+    function downloadCanvas(id,filename){ const a=document.createElement('a'); a.download=filename; a.href=document.getElementById(id).toDataURL('image/png'); a.click(); }
 
     document.addEventListener('DOMContentLoaded', ()=>{
       render();
-      qsa('input[name="currency"]').forEach(r => r.addEventListener('change', apply));
-      ['trm','y1budget','factors'].forEach(id=> qs('#'+id).addEventListener('change', apply));
-      qsa('input[data-pct]').forEach(inp=> inp.addEventListener('change', apply));
-      qs('#apply').addEventListener('click', apply);
-      qs('#dl1').addEventListener('click', ()=> downloadCanvas('donut','maci_crea_y1_desglose.png'));
-      qs('#dl2').addEventListener('click', ()=> downloadCanvas('line','maci_crea_5y_curva.png'));
+      qsa('input[name="currency"]').forEach(r=>r.addEventListener('change',apply));
+      ['trm','y1budget','factors'].forEach(id=>qs('#'+id).addEventListener('change',apply));
+      qsa('input[data-pct]').forEach(inp=>inp.addEventListener('change',apply));
+      document.getElementById('apply').addEventListener('click',apply);
+      document.getElementById('dl1').addEventListener('click',()=>downloadCanvas('donut','maci_crea_y1_desglose.png'));
+      document.getElementById('dl2').addEventListener('click',()=>downloadCanvas('line','maci_crea_5y_curva.png'));
     });
   </script>
 </body>
